@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #eee;
+    --color-bg-accent: #ddd;
+    --color-accent: #aaa;
+    --color-contrast: #333;
+    --color-red: red;
+    --color-green: limegreen;
+    --color-yellow: orange;
+    --color-som: rgb(0, 63, 124);
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #333;
+        --color-bg-accent: #444;
+        --color-accent: #777;
+        --color-contrast: #eee;
+        --color-red: #b30;
+        --color-green: forestgreen;
+        --color-yellow: darkorange;
+        color-scheme: dark;
+    }
+}
+
+body {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--color-bg);
+}
+
+* {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: var(--color-contrast);
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ! HEADER ! */
+
+#header {
+    right: 0px;
+    width: 40%;
+    padding-left: 25px;
+}
+
+#main-menu {
+    left: 0px;
+    width: 60%;
+}
+
+#main-menu a {
+    padding: 5px;
+    border-radius: 100vmax;
+    background-color: var(--color-bg);
+}
+
+#main-menu a.active {
+    background-color: var(--color-accent);
+}
+
+#header,
+#main-menu {
+    position: fixed;
+    top: 0px;
+    height: 50px;
+    background-color: var(--color-som);
+}
+
+#header a, #main-menu a {
+    text-decoration: none;
+}
+
+#user,
+#main-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#header .left {
+    display: none;
+}
+
+#header div {
+    height: 50px;
+}
+
+#user img {
+    object-fit: cover;
+    border-radius: 10000px;
+    width: 35px;
+    height: 35px;
+}
+
+#header a[href="https: //elo.somtoday.nl/home/messages"],
+#header #inbox-counter {
+    display: none;
+}
+
+#main-menu q {
+    quotes: none;
+}
+
+/* ! ALL PAGES ! */
+
+#content {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: calc(100vh - 50px);
+    width: 100vw;
+}
+
+#content>.loaderFade {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+#content>.loaderFade>#master-panel {
+    overflow-y: auto;
+    flex: 2;
+    transition: flex 0.5s;
+}
+
+#content>.loaderFade #detail-panel-wrapper {
+    flex: 1;
+    transition: flex 0.5s;
+    overflow-y: auto;
+}
+#content>.loaderFade #detail-panel {
+    max-width: 100%;
+}
+
+#content>.loaderFade #detail-panel-wrapper:not(.large) {
+    flex: 0;
+    width: 0px !important;
+}
+
+#content>.loaderOverlay {
+    display: none;
+}
+
+#detail-panel>div {
+    padding: 10px;
+}
+
+#detail-panel .roosterDetail {
+    display: none;
+}
+
+.close-detailpanel #remove-sign {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+body:not(.homework) .close-detailpanel #remove-sign {
+    display: none;
+}
+
+.close-detailpanel #remove-sign::before {
+    content: 'sluiten';
+}
+
+/* ! NEWS ! */
+
+#activities > div {
+    background-color: var(--color-bg-accent);
+    border-radius: 10px;
+}
+
+/* ! SCHEDULE ! */
+
+.roosterMaster {
+    height: calc(100% - 22px);
+}
+
+.roster-table {
+    height: calc(100% - 80px);
+    font-size: 0.7em;
+}
+
+.roster-table-header,
+.roster-table-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.roster-table-header {
+    height: 70px;
+}
+
+.roster-table-content {
+    height: calc(100% - 70px);
+}
+
+.roster-table .weekitems,
+.roster-table .day,
+.roster-table .hours {
+    height: 100%;
+    width: calc(100% / 6);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.roster-table .filler {
+    display: none;
+}
+
+.hour.lesuur,
+.afspraak.lesuur {
+    height: calc(100% / 10 - 4px) !important;
+    width: calc(100% - 4px);
+    padding: 5px;
+    margin: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.afspraak.lesuur {
+    background-color: var(--color-bg-accent);
+    border-radius: 10px;
+}
+
+.hour.pauze,
+.afspraak.pauze {
+    height: calc(100% / 20) !important;
+    width: 100%;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.afspraak .afspraakVakNaam {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.afspraak .afspraak-window {
+    display: none;
+}
+
+.afspraakTijdEnLocatie {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.afspraak .toekenning,
+.afspraak .huiswerk-gemaakt {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ! HOMEWORK ! */
+
+.yellow.ribbon {
+    display: none;
+}
+
+.homeworkaster>div:not(.panel-header) {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.homeworkaster>div:not(.panel-header)>div {
+    width: calc(33.5% - 10px);
+    height: calc(100vh - 165px);
+    padding: 10px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.homeworkaster>div:not(.panel-header)>div {
+    background-color: var(--color-bg-accent);
+    border-radius: 10px;
+}
+
+.date div {
+    display: flex;
+    align-items: center;
+}
+
+.date div * {
+    padding-right: 5px;
+    font-size: 1.5em;
+}
+
+.homeworkDetail .type {
+    display: none;
+}
+
+.m-wrapper {
+    margin-bottom: 10px;
+}
+
+.m-element .type {
+    font-size: 1.2em;
+}
+
+.m-element .huiswerk span:empty {
+    display: none;
+}
+.m-element .huiswerk span:empty + br {
+    display:none;
+}
+
+.icon-check::before {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-green);
+    border-radius: 10000px;
+    content: "af";
+}
+
+.icon-check-empty::before {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-red);
+    border-radius: 10000px;
+    content: "nog niet af";
+}
+
+.icon-toets::before,
+.icon-grote-toets::before {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-yellow);
+    border-radius: 10000px;
+}
+
+.icon-toets::before {
+    content: "toets";
+}
+
+.icon-grote-toets::before {
+    content: "grote toets";
+}
+
+body.homework #content>.loaderFade>#master-panel {
+    flex: 1;
+}
+
+body.homework #content>.loaderFade>#detail-panel-wrapper {
+    flex: 0;
+}
+body.homework #content>.loaderFade:has(#detail-panel-wrapper.large)>#master-panel {
+    flex: 0;
+}
+
+body.homework #content>.loaderFade>#detail-panel-wrapper.large {
+    flex: 1;
+}
+.uploadFrame {
+    width: 100%;
+    height: 100%;
+}
+.modal-dialog-body {
+    padding: 10px !important;
+}
+
+/* ! MARKS, SUBJECTS AND ABSENCE ! */
+
+.cijfersMaster .m-element, .vakkenMaster .m-element, .absenceMaster .m-element, .leermiddelenMaster .m-element {
+    background-color: var(--color-bg-accent);
+    border-radius: 10px;
+    padding: 5px;
+}

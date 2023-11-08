@@ -1,0 +1,10 @@
+{
+    "esversion": 11,
+    "asi": true,
+    "module": true,
+    "globals": {
+        "console": true
+    },
+    "browser": true,
+    "expr": true
+}
